@@ -45,7 +45,7 @@ class Blueprint:
             l.append(3)
         return l
 
-def solve(blueprint, limit=24):
+def solve(blueprint, limit=24, prune = 3000):
     # resource state = (ore, clay, obs, geo)
     # robot state = (ore, clay, obs, geo) robots
     # if we can make all 4 we must, otherwise check different states
@@ -55,7 +55,6 @@ def solve(blueprint, limit=24):
     def rec(time, state):
         state.sort(reverse=False, key = lambda s: key(s))
         #state.sort(reverse=True, key = lambda s: tuple(reversed(s[4:])))
-        prune = 10000
         if len(state) > prune:
             state = state[:prune]
             pass
@@ -123,12 +122,12 @@ def part2():
     ans = 1
     for i in range(min(3,len(prints))):
         b = prints[i]
-        s = solve(b, limit=32)
+        s = solve(b, limit=32, prune=10000)
         sol.append(s)
         ans *= s
     return ans, sol
 
 
 
-#print(f'Part 1: {part1()}')
-print(f'Part 2: {part2()}')
+print(f'Part 1: {part1()}')
+#print(f'Part 2: {part2()}')
