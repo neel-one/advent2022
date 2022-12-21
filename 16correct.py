@@ -137,5 +137,5 @@ def part1():
 def part2():
     return solve(parse(), limit=26, elephant=True, prune=3000)
 
-print(f'Part 1: {part1()}')
+#print(f'Part 1: {part1()}')
 print(f'Parts 2: {part2()}')

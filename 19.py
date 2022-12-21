@@ -53,7 +53,7 @@ def solve(blueprint, limit=24, prune = 3000):
     key = lambda s: [-v for pair in zip(tuple(reversed(s[4:])), tuple(reversed(s[:4]))) for v in pair]
     #key = lambda s: [-s[7], -s[3]] #[-v for v in reversed(s[]) ]
     def rec(time, state):
-        state.sort(reverse=False, key = lambda s: key(s))
+        state.sort(reverse=False, key = key)
         #state.sort(reverse=True, key = lambda s: tuple(reversed(s[4:])))
         if len(state) > prune:
             state = state[:prune]
